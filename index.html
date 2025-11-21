@@ -190,10 +190,18 @@
             font-size: 0.95rem;
         }
 
-        .article-meta {
+                .article-meta {
             font-size: 0.75rem;
             opacity: 0.8;
             margin-bottom: 0.4rem;
+        }
+
+        .pub-date {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .meta-prefix {
+            opacity: 0.8;
         }
 
         .pill {
@@ -305,7 +313,7 @@
 
                 <div class="grid-articles">
                     <article class="article-card">
-                        <div class="article-meta">Ejemplo · 21 de noviembre de 2025 · <span class="pill">Estrés</span></div>
+                                            <div class="article-meta"><span class="meta-prefix">Ejemplo · </span><time class="pub-date" datetime="2025-11-21" data-date="2025-11-21"></time> · <span class="pill">Estrés</span></div>
                         <h3>¿Qué le ocurre al cerebro durante el estrés agudo?</h3>
                         <p>
                             Una explicación breve sobre el eje del estrés, el papel del cortisol y cómo
@@ -314,7 +322,7 @@
                     </article>
 
                     <article class="article-card">
-                        <div class="article-meta">Ejemplo · 21 de noviembre de 2025 · <span class="pill">Memoria</span></div>
+                                            <div class="article-meta"><span class="meta-prefix">Ejemplo · </span><time class="pub-date" datetime="2025-11-21" data-date="2025-11-21"></time> · <span class="pill">Memoria</span></div>
                         <h3>Plasticidad sináptica: la base neuronal del aprendizaje</h3>
                         <p>
                             ¿Qué es la potenciación a largo plazo y por qué se considera un pilar para
@@ -323,7 +331,7 @@
                     </article>
 
                     <article class="article-card">
-                        <div class="article-meta">Ejemplo · 21 de noviembre de 2025 · <span class="pill">Realidad virtual</span></div>
+                                            <div class="article-meta"><span class="meta-prefix">Ejemplo · </span><time class="pub-date" datetime="2025-11-21" data-date="2025-11-21"></time> · <span class="pill">Realidad virtual</span></div>
                         <h3>Realidad virtual para estudiar memoria espacial</h3>
                         <p>
                             Una introducción a los laberintos virtuales tipo brazo radial y su uso como
@@ -344,6 +352,48 @@
                     <li>• <strong>Adicciones y recompensa</strong>: circuitos dopaminérgicos y vulnerabilidad.</li>
                     <li>• <strong>Realidad virtual en neurociencia</strong>: evaluación cognitiva inmersiva.</li>
                 </ul>
+            </section>
+
+            <section id="linea-investigacion" style="margin-top:1.5rem;">
+                <h3 class="section-title">Últimos artículos de mi línea de investigación</h3>
+                <p style="font-size:0.9rem;">
+                    En esta sección se presentan algunos trabajos representativos relacionados con estrés, adicciones,
+                    neurociencia cognitiva y entornos de realidad virtual. Puedes actualizar esta lista conforme se
+                    publiquen nuevos artículos.
+                </p>
+                <div class="grid-articles">
+                    <article class="article-card">
+                        <div class="article-meta"><span class="meta-prefix">Artículo · </span><time class="pub-date" datetime="2023-06-01" data-date="2023-06-01"></time> · <span class="pill">Estrés</span></div>
+                        <h3>Efectos del estrés agudo sobre la morfología dendrítica en corteza prefrontal e hipocampo</h3>
+                        <p>
+                            Estudio experimental en modelo animal que analiza cómo el estrés variable agudo modifica la
+                            complejidad dendrítica en regiones clave para la regulación emocional y la memoria.
+                        </p>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-meta"><span class="meta-prefix">Artículo · </span><time class="pub-date" datetime="2024-02-15" data-date="2024-02-15"></time> · <span class="pill">Realidad virtual</span></div>
+                        <h3>NeuroHM: laberinto virtual tipo brazo radial para evaluar memoria espacial en humanos</h3>
+                        <p>
+                            Desarrollo y validación de un entorno de realidad virtual inmersiva para estudiar aprendizaje
+                            y memoria espacial, así como los efectos del estrés agudo sobre el rendimiento cognitivo.
+                        </p>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-meta"><span class="meta-prefix">Artículo · </span><time class="pub-date" datetime="2024-09-10" data-date="2024-09-10"></time> · <span class="pill">Adicciones</span></div>
+                        <h3>Biomarcadores digitales para el monitoreo de vulnerabilidad a adicciones</h3>
+                        <p>
+                            Propuesta de integración de desempeño en tareas cognitivas, variables fisiológicas y análisis
+                            de conducta mediante herramientas digitales para apoyar la prevención y rehabilitación.
+                        </p>
+                    </article>
+                </div>
+                <p style="font-size:0.8rem; margin-top:0.8rem;">
+                    Para agregar un nuevo artículo, copia uno de estos bloques <code>&lt;article&gt;</code>, ajusta el
+                    título, el resumen y actualiza el atributo <code>data-date="AAAA-MM-DD"</code> con la fecha de
+                    publicación correspondiente.
+                </p>
             </section>
         </section>
 
@@ -378,10 +428,11 @@
             <section class="card sidebar-section" id="contacto">
                 <h3 class="section-title">Contacto y colaboraciones</h3>
                 <p class="contact-block">
+                                    <p class="contact-block">
                     Para dudas, colaboraciones o invitaciones a charlas:
                     <br/>
-                    <strong>Correo:</strong> <em>(escribe aquí tu correo institucional)</em>
-                </p>
+                    <strong>Correo:</strong> <a href="mailto:david.fernandez@academicos.udg.mx">david.fernandez@academicos.udg.mx<\/a>
+                <\/p>
                 <p style="font-size:0.8rem;">
                     Si lo deseas, puedes añadir enlaces a tu perfil de ORCID, Google Scholar o redes
                     académicas.
@@ -390,15 +441,53 @@
         </aside>
     </main>
 
-    <footer>
-        <span id="footer-text">
+        <footer>
+        <div id="footer-text">
             © <span id="year"></span> Divulgación en Neurociencias · Dr. David Fernández Quezada · UDG CUCS
-        </span>
+            <br/>
+            <small>Visitas a esta página (en este navegador): <span id="view-counter">0</span></small>
+        </div>
     </footer>
 
-    <script>
+        <script>
         // Actualiza automáticamente el año en el footer
         document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Contador simple de vistas usando localStorage (por navegador)
+        (function() {
+            try {
+                var views = Number(localStorage.getItem("pageViews") || "0");
+                views += 1;
+                localStorage.setItem("pageViews", String(views));
+                var vc = document.getElementById("view-counter");
+                if (vc) {
+                    vc.textContent = views.toLocaleString("es-MX");
+                }
+            } catch (e) {
+                // Si localStorage no está disponible, no se hace nada
+            }
+        })();
+
+        // Formateo automático de fechas de publicaciones en español
+        (function() {
+            var meses = [
+                "enero", "febrero", "marzo", "abril", "mayo", "junio",
+                "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+            ];
+            var nodos = document.querySelectorAll(".pub-date[data-date]");
+            nodos.forEach(function(nodo) {
+                var valor = nodo.getAttribute("data-date");
+                if (!valor) return;
+                var partes = valor.split("-");
+                if (partes.length !== 3) return;
+                var anio = partes[0];
+                var mes = parseInt(partes[1], 10) - 1;
+                var dia = parseInt(partes[2], 10);
+                if (isNaN(mes) || isNaN(dia)) return;
+                var texto = dia + " de " + meses[mes] + " de " + anio;
+                nodo.textContent = texto;
+            });
+        })();
     </script>
 </body>
 </html>
