@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divulgación en Neurociencias | Dr. David Fernández Quezada</title>
+    <meta name="description" content="Plataforma de divulgación científica en neurociencias del Dr. David Fernández Quezada, Universidad de Guadalajara, CUCS." />
+    <style>
+        :root {
+            --color-bg: #f5f5f7;
+            --color-surface: #ffffff;
+            --color-primary: #1a237e; /* azul UDG-style */
+            --color-primary-soft: #3949ab;
+            --color-accent: #ffb300;
+            --color-text: #1f2933;
+            --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-soft));
+            color: #fff;
+            padding: 1rem 1.5rem 2.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .top-bar {
+            max-width: 1100px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 64px;
+            width: auto;
+        }
+
+        .site-title {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .site-title h1 {
+            margin: 0;
+            font-size: 1.4rem;
+            letter-spacing: 0.03em;
+        }
+
+        .site-title span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        nav a {
+            color: #e3e7ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(6px);
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: -1.5rem auto 2.5rem;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            main {
+                grid-template-columns: minmax(0, 1fr);
+                margin-top: 1rem;
+            }
+        }
+
+        .card {
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h2 {
+            margin: 0;
+            font-size: 1.7rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(26, 35, 126, 0.06);
+        }
+
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .btn-primary,
+        .btn-ghost {
+            border-radius: 999px;
+            padding: 0.55rem 1.3rem;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: #2f2f2f;
+            font-weight: 600;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .grid-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .article-card {
+            border-radius: 12px;
+            padding: 0.9rem 1rem;
+            background: #fafafa;
+            border: 1px solid #eceff1;
+        }
+
+        .article-card h3 {
+            margin: 0 0 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .article-meta {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-bottom: 0.4rem;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 999px;
+            background: #e8eaf6;
+        }
+
+        .sidebar-section + .sidebar-section {
+            margin-top: 1rem;
+        }
+
+        .list-clean {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .list-clean li {
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 999px;
+            background: #e3f2fd;
+            margin-left: 0.35rem;
+        }
+
+        .contact-block {
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            padding: 1rem;
+            color: #546e7a;
+            border-top: 1px solid #e0e0e0;
+            background: #f7f7f9;
+        }
+
+        code {
+            font-size: 0.8rem;
+            background: #eceff1;
+            padding: 0.15rem 0.3rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <!-- LOGO: reemplaza la ruta logo-cucs.png por el archivo del logo oficial que guardes en tu carpeta -->
+            <img src="logo-cucs.png" alt="Logo UDG CUCS" class="logo" />
+            <div class="site-title">
+                <h1>Divulgación en Neurociencias</h1>
+                <span>Dr. David Fernández Quezada · Universidad de Guadalajara, CUCS</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#articulos">Artículos</a>
+            <a href="#series">Series temáticas</a>
+            <a href="#docencia">Docencia</a>
+            <a href="#recursos">Recursos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- COLUMNA PRINCIPAL -->
+        <section class="card" id="inicio">
+            <div class="hero">
+                <h2>Neurociencia explicada con rigor, claridad y sentido humano</h2>
+                <p>
+                    Este espacio está dedicado a compartir conocimiento en neurociencias de manera
+                    accesible, basada en evidencia y conectada con la vida cotidiana. Aquí encontrarás
+                    explicaciones sobre cerebro, conducta, salud mental, estrés, memoria, realidad
+                    virtual y más.
+                </p>
+                <div class="hero-tags">
+                    <span class="tag">Cerebro y conducta</span>
+                    <span class="tag">Estrés y salud mental</span>
+                    <span class="tag">Aprendizaje y memoria</span>
+                    <span class="tag">Realidad virtual y neurociencia</span>
+                </div>
+                <div class="btn-row">
+                    <a href="#articulos" class="btn-primary">Ver últimos artículos</a>
+                    <a href="#series" class="btn-ghost">Explorar series temáticas</a>
+                </div>
+            </div>
+
+            <hr style="border:none;border-top:1px solid #e0e0e0;margin:1rem 0;" />
+
+            <section id="articulos">
+                <h3 class="section-title">Últimas entradas de divulgación</h3>
+                <p style="font-size:0.9rem; margin-top:0;">
+                    Para actualizar esta sección día a día, sólo necesitas editar este bloque de
+                    artículos en el archivo <code>index.html</code> y agregar un nuevo
+                    <code>&lt;article&gt;</code> siguiendo el mismo formato.
+                </p>
+
+                <div class="grid-articles">
+                    <article class="article-card">
+                        <div class="article-meta">Ejemplo · 21 de noviembre de 2025 · <span class="pill">Estrés</span></div>
+                        <h3>¿Qué le ocurre al cerebro durante el estrés agudo?</h3>
+                        <p>
+                            Una explicación breve sobre el eje del estrés, el papel del cortisol y cómo
+                            estas respuestas pueden ser adaptativas o dañinas según su intensidad y duración.
+                        </p>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-meta">Ejemplo · 21 de noviembre de 2025 · <span class="pill">Memoria</span></div>
+                        <h3>Plasticidad sináptica: la base neuronal del aprendizaje</h3>
+                        <p>
+                            ¿Qué es la potenciación a largo plazo y por qué se considera un pilar para
+                            entender cómo el cerebro almacena recuerdos?
+                        </p>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-meta">Ejemplo · 21 de noviembre de 2025 · <span class="pill">Realidad virtual</span></div>
+                        <h3>Realidad virtual para estudiar memoria espacial</h3>
+                        <p>
+                            Una introducción a los laberintos virtuales tipo brazo radial y su uso como
+                            herramientas de evaluación cognitiva en investigación.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="series" style="margin-top:1.5rem;">
+                <h3 class="section-title">Series temáticas</h3>
+                <p style="font-size:0.9rem;">
+                    Puedes organizar tus contenidos en miniseries de 3–5 entradas, por ejemplo:
+                </p>
+                <ul class="list-clean">
+                    <li>• <strong>Estrés y cerebro</strong>: del eje HHA a la inflamación crónica.</li>
+                    <li>• <strong>Neuroplasticidad</strong>: cómo el cerebro cambia con la experiencia.</li>
+                    <li>• <strong>Adicciones y recompensa</strong>: circuitos dopaminérgicos y vulnerabilidad.</li>
+                    <li>• <strong>Realidad virtual en neurociencia</strong>: evaluación cognitiva inmersiva.</li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- COLUMNA LATERAL / SIDEBAR -->
+        <aside>
+            <section class="card sidebar-section" id="docencia">
+                <h3 class="section-title">Sobre el autor</h3>
+                <p class="contact-block">
+                    <strong>Dr. David Fernández Quezada</strong><br/>
+                    Profesor–Investigador en Neurociencias<br/>
+                    Universidad de Guadalajara, Centro Universitario de Ciencias de la Salud (CUCS).
+                </p>
+                <p style="font-size:0.9rem;">
+                    Intereses: estrés y adicciones, neurociencia cognitiva, biomarcadores digitales y
+                    entornos de realidad virtual para evaluar aprendizaje y memoria.
+                </p>
+            </section>
+
+            <section class="card sidebar-section" id="recursos">
+                <h3 class="section-title">Recursos recomendados</h3>
+                <ul class="list-clean">
+                    <li>• Guías básicas de neuroanatomía <span class="badge">PDF</span></li>
+                    <li>• Introducción al estrés y salud mental <span class="badge">Artículo</span></li>
+                    <li>• Herramientas de realidad virtual para docencia <span class="badge">VR</span></li>
+                </ul>
+                <p style="font-size:0.8rem;margin-top:0.6rem;">
+                    Puedes convertir cada elemento en un enlace añadiendo etiquetas
+                    <code>&lt;a href="..."&gt;</code> a los recursos que subas o cites.
+                </p>
+            </section>
+
+            <section class="card sidebar-section" id="contacto">
+                <h3 class="section-title">Contacto y colaboraciones</h3>
+                <p class="contact-block">
+                    Para dudas, colaboraciones o invitaciones a charlas:
+                    <br/>
+                    <strong>Correo:</strong> <em>(escribe aquí tu correo institucional)</em>
+                </p>
+                <p style="font-size:0.8rem;">
+                    Si lo deseas, puedes añadir enlaces a tu perfil de ORCID, Google Scholar o redes
+                    académicas.
+                </p>
+            </section>
+        </aside>
+    </main>
+
+    <footer>
+        <span id="footer-text">
+            © <span id="year"></span> Divulgación en Neurociencias · Dr. David Fernández Quezada · UDG CUCS
+        </span>
+    </footer>
+
+    <script>
+        // Actualiza automáticamente el año en el footer
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
