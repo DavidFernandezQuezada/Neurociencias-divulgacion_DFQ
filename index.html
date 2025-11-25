@@ -3,14 +3,54 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NeuroAlClick | Dr. David Fernández Quezada</title>
-    <meta name="description" content="Plataforma de divulgación científica en neurociencias del Dr. David Fernández Quezada, Universidad de Guadalajara, CUCS 
-        Departamento de Neurociencias." />
+
+    <title>NeuroAlClick | Divulgación en Neurociencias – Dr. David Fernández Quezada</title>
+
+    <!-- SEO básico -->
+    <meta name="description" content="NeuroAlClick es una plataforma de divulgación científica en neurociencias del Dr. David Fernández Quezada (Universidad de Guadalajara, CUCS, Departamento de Neurociencias), con artículos, recursos y contenido accesible sobre cerebro, conducta y salud mental." />
+    <meta name="author" content="Dr. David Fernández Quezada" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://neuroalclick.org/" />
+
+    <!-- Open Graph / redes sociales -->
+    <meta property="og:title" content="NeuroAlClick | Divulgación en Neurociencias" />
+    <meta property="og:description" content="Artículos, recursos y divulgación científica en neurociencias, estrés, adicciones, realidad virtual y biomarcadores digitales, por el Dr. David Fernández Quezada." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://neuroalclick.org/" />
+    <meta property="og:site_name" content="NeuroAlClick" />
+    <!-- Si después tienes una imagen de portada, cámbiala aquí -->
+    <meta property="og:image" content="https://neuroalclick.org/portada-neuroalclick.png" />
+
+    <!-- Twitter Card (opcional, pero ayuda) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NeuroAlClick | Divulgación en Neurociencias" />
+    <meta name="twitter:description" content="Divulgación científica en neurociencias y salud mental, al alcance de un click." />
+    <meta name="twitter:image" content="https://neuroalclick.org/portada-neuroalclick.png" />
+
+    <!-- Datos estructurados básicos (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "NeuroAlClick",
+      "url": "https://neuroalclick.org/",
+      "description": "Plataforma de divulgación científica en neurociencias, estrés, adicciones, realidad virtual y biomarcadores digitales.",
+      "publisher": {
+        "@type": "Person",
+        "name": "Dr. David Fernández Quezada",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidad de Guadalajara, Centro Universitario de Ciencias de la Salud (CUCS)"
+        }
+      }
+    }
+    </script>
+
     <style>
         :root {
             --color-bg: #f5f5f7;
             --color-surface: #ffffff;
-            --color-primary: #1a237e; /* azul UDG-style */
+            --color-primary: #1a237e;
             --color-primary-soft: #3949ab;
             --color-accent: #ffb300;
             --color-text: #1f2933;
@@ -111,6 +151,15 @@
             box-shadow: var(--shadow-soft);
         }
 
+        /* añadimos estilo para .sidebar-card (comentarios) */
+        .sidebar-card {
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            margin-top: 1rem;
+        }
+
         .hero {
             display: flex;
             flex-direction: column;
@@ -191,7 +240,7 @@
             font-size: 0.95rem;
         }
 
-                .article-meta {
+        .article-meta {
             font-size: 0.75rem;
             opacity: 0.8;
             margin-bottom: 0.4rem;
@@ -259,6 +308,7 @@
         }
     </style>
 </head>
+    
 <body>
     <header>
         <div class="top-bar">
