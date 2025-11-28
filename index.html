@@ -306,6 +306,54 @@
             padding: 0.15rem 0.3rem;
             border-radius: 4px;
         }
+
+        /* ---- PAGINATION STYLES ---- */
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: flex-start;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+        .page-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+            padding: 0 9px;
+            border-radius: 6px;
+            background: transparent;
+            border: 1px solid transparent;
+            color: #1a237e;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .page-btn:hover {
+            background: rgba(57,73,171,0.08);
+        }
+        .page-btn.active {
+            background: var(--color-primary);
+            color: #fff;
+            border-color: rgba(0,0,0,0.04);
+        }
+        .page-btn.small {
+            min-width: auto;
+            padding: 4px 8px;
+            font-size: 0.9rem;
+        }
+        .page-nav {
+            margin-left: 8px;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        @media (max-width:600px) {
+            .pagination { justify-content: center; }
+        }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2607637405526975"
      crossorigin="anonymous"></script>
@@ -353,32 +401,39 @@
                     En este espacio se comparten publicaciones recientes y relevantes de diversos investigadores alrededor del mundo. El propósito es acercar al lector a descubrimientos actuales y perspectivas novedosas en el campo de las neurociencias, fomentando la curiosidad científica y el aprendizaje continuo.
                 </p>
 
-                <div class="grid-articles">
+                <!-- CONTENEDOR DE ARTÍCULOS: no mover esta estructura -->
+                <div class="grid-articles" id="latest-grid">
 
  <article class="article-card">
-                                            <div class="article-meta"><span class="meta-prefix"> </span><time class="pub-date" datetime="2025-11-24" data-date="2025-11-24"></time> · <span class="pill">adicciones</span></div>
-                        <h3>El DMT lleva al cerebro al límite: adiós al equilibrio, adiós al “yo”</h3>
-          
-<p>Un estudio reciente que utilizó DMT como herramienta científica mostró cómo los psicodélicos modifican las ondas alfa del cerebro y debilitan nuestra sensación de “yo”.
-Los investigadores descubrieron que el DMT aleja al cerebro de su equilibrio habitual entre el orden y el caos —un estado considerado fundamental para mantener una sensación de identidad estable y coherente a lo largo del tiempo.<a href="https://doi.org/10.1523/JNEUROSCI.0344-25.2025">Referencia</a> </p> 
-<img src="DMT.jpg" alt="adicciones" class="article-image">
+    <div class="article-meta"><span class="meta-prefix"> </span><time class="pub-date" datetime="2025-11-24" data-date="2025-11-24"></time> · <span class="pill">adicciones</span></div>
+    <h3>El DMT lleva al cerebro al límite: adiós al equilibrio, adiós al “yo”</h3>
+    <p>Un estudio reciente que utilizó DMT como herramienta científica mostró cómo los psicodélicos modifican las ondas alfa del cerebro y debilitan nuestra sensación de “yo”.
+    Los investigadores descubrieron que el DMT aleja al cerebro de su equilibrio habitual entre el orden y el caos —un estado considerado fundamental para mantener una sensación de identidad estable y coherente a lo largo del tiempo.<a href="https://doi.org/10.1523/JNEUROSCI.0344-25.2025">Referencia</a> </p> 
+    <img src="DMT.jpg" alt="adicciones" class="article-image">
   </article>
 
-                    <article class="article-card">
-                                            <div class="article-meta"><span class="meta-prefix"> </span><time class="pub-date" datetime="2025-11-03" data-date="2025-11-03"></time> · <span class="pill">Conducta</span></div>
-                        <h3>Acontecimientos inesperados y comportamiento prosocial: el efecto Batman</h3>
-                        <p>Un nuevo estudio conductual muestra que los eventos súbitos e inesperados pueden aumentar de manera notable las conductas altruistas en contextos cotidianos. Cuando una persona disfrazada de Batman apareció en el metro de Milán, los pasajeros fueron casi el doble de propensos a ceder su asiento a una mujer embarazada en comparación con la condición habitual sin estímulos inesperados. Estos resultados sugieren que la sorpresa puede activar nuestra sensibilidad social y favorecer respuestas prosociales inmediatas. <a href="https://doi.org/10.1038/s44184-025-00171-5">Referencia</a> </p> 
-<img src="batman.png" alt="Batman en el metro" class="article-image">
+  <article class="article-card">
+    <div class="article-meta"><span class="meta-prefix"> </span><time class="pub-date" datetime="2025-11-03" data-date="2025-11-03"></time> · <span class="pill">Conducta</span></div>
+    <h3>Acontecimientos inesperados y comportamiento prosocial: el efecto Batman</h3>
+    <p>Un nuevo estudio conductual muestra que los eventos súbitos e inesperados pueden aumentar de manera notable las conductas altruistas en contextos cotidianos. Cuando una persona disfrazada de Batman apareció en el metro de Milán, los pasajeros fueron casi el doble de propensos a ceder su asiento a una mujer embarazada en comparación con la condición habitual sin estímulos inesperados. Estos resultados sugieren que la sorpresa puede activar nuestra sensibilidad social y favorecer respuestas prosociales inmediatas. <a href="https://doi.org/10.1038/s44184-025-00171-5">Referencia</a> </p> 
+    <img src="batman.png" alt="Batman en el metro" class="article-image">
   </article>
 
-                    <article class="article-card">
-                                            <div class="article-meta"><span class="meta-prefix"> </span><time class="pub-date" datetime="2025-11-18" data-date="2025-11-18"></time> · <span class="pill">AI</span></div>
-                        <h3>El Sistema Nervioso tiene modo: Dance</h3>
-                        <p>Un equipo de investigadores utilizó un extenso conjunto de datos de vídeos de danza y modelos avanzados de IA para mapear cómo el cerebro humano interpreta la danza, revelando diferencias sorprendentes entre expertos y no expertos. Al combinar registros de resonancia magnética funcional (RMf) con características multimodales derivadas de la IA, descubrieron que las regiones cerebrales de orden superior superan a las simples señales de movimiento o sonido al procesar la coreografía. <a href="https://doi.org/10.1038/s41467-025-65039-w">Referencia</a> </p> 
-<img src="dance.jpg" alt="danzar" class="article-image">
-                    </article>
+  <article class="article-card">
+    <div class="article-meta"><span class="meta-prefix"> </span><time class="pub-date" datetime="2025-11-18" data-date="2025-11-18"></time> · <span class="pill">AI</span></div>
+    <h3>El Sistema Nervioso tiene modo: Dance</h3>
+    <p>Un equipo de investigadores utilizó un extenso conjunto de datos de vídeos de danza y modelos avanzados de IA para mapear cómo el cerebro humano interpreta la danza, revelando diferencias sorprendentes entre expertos y no expertos. Al combinar registros de resonancia magnética funcional (RMf) con características multimodales derivadas de la IA, descubrieron que las regiones cerebrales de orden superior superan a las simples señales de movimiento o sonido al procesar la coreografía. <a href="https://doi.org/10.1038/s41467-025-65039-w">Referencia</a> </p> 
+    <img src="dance.jpg" alt="danzar" class="article-image">
+  </article>
 
                 </div>
+
+                <!-- PAGINATION: aquí se muestran los números -->
+                <div id="pagination-latest" class="pagination" aria-label="Paginación de últimas publicaciones">
+                    <!-- Los botones se generan dinámicamente -->
+                </div>
+                <!-- FIN PAGINATION -->
+
             </section>
 
             <section id="linea-investigacion" style="margin-top:1.5rem;">
@@ -496,7 +551,7 @@ En este estudio presentamos un protocolo innovador para desarrollar un modelo pr
 <div class="sidebar-card">
     <h2>Comentarios y Comunidad</h2>
 
-    <p style="font-size: 0.95rem; line-height: 1.5;">
+    <p style="font-size:0.95rem; line-height: 1.5;">
         👋 <strong>¡Bienvenidos a NeuroAlClick!</strong><br><br>
         Este espacio de Discusiones reúne a estudiantes, investigadores, profesionales de la salud y personas interesadas en comprender mejor el cerebro y la conducta.<br><br>
 
@@ -539,7 +594,8 @@ En este estudio presentamos un protocolo innovador para desarrollar un modelo pr
         </div>
     </footer>
 
-        <script>
+    <!-- SCRIPTS EXISTENTES -->
+    <script>
         // Actualiza automáticamente el año en el footer
         document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -579,29 +635,101 @@ En este estudio presentamos un protocolo innovador para desarrollar un modelo pr
             });
         })();
     </script> 
-    <script data-name="BMC-Widget"
-data-cfasync="false"
-src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-data-id="davidfernaf"
-data-description="Apoya mi trabajo"
-data-message="Si quieres apoyar la divulgación científica, puedes invitarme un café 😊"
-data-color="#FFDD00"
-data-position="Right"
-data-x_margin="16"
-data-y_margin="16">
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const articulos = document.querySelectorAll(".article-card");
-    articulos.forEach((art, i) => {
-        const grupo = Math.floor(i / 3) + 1; 
-        const titulo = art.querySelector("h3");
-        if (titulo) {
-            titulo.textContent = grupo + ". " + titulo.textContent;
+
+    <!-- ===== PAGINATION SCRIPT: muestra 3 artículos por página (solo en #articulos) ===== -->
+    <script>
+    (function () {
+        // Configuración: cuántos artículos por página
+        const perPage = 3;
+
+        // Tomamos únicamente los .article-card dentro de #articulos (no afectamos otras secciones)
+        const grid = document.querySelector('#articulos #latest-grid');
+        if (!grid) return;
+
+        const items = Array.from(grid.querySelectorAll('.article-card'));
+        const total = items.length;
+        if (total === 0) return;
+
+        const pages = Math.ceil(total / perPage);
+        const paginationContainer = document.getElementById('pagination-latest');
+
+        // Crear botón (prev)
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'page-btn small';
+        prevBtn.textContent = 'Anterior';
+        prevBtn.disabled = true;
+        prevBtn.addEventListener('click', () => showPage(currentPage - 1));
+        paginationContainer.appendChild(prevBtn);
+
+        // Generar botones numerados
+        const pagesFragment = document.createDocumentFragment();
+        for (let p = 1; p <= pages; p++) {
+            const btn = document.createElement('button');
+            btn.className = 'page-btn';
+            btn.setAttribute('data-page', p);
+            btn.setAttribute('aria-label', 'Página ' + p);
+            btn.textContent = p;
+            btn.addEventListener('click', () => showPage(p));
+            pagesFragment.appendChild(btn);
         }
-    });
-});
-</script>
+        paginationContainer.appendChild(pagesFragment);
+
+        // Crear botón (next)
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'page-btn small';
+        nextBtn.textContent = 'Siguiente';
+        nextBtn.disabled = pages <= 1;
+        nextBtn.addEventListener('click', () => showPage(currentPage + 1));
+        paginationContainer.appendChild(nextBtn);
+
+        // Función para mostrar una página concreta
+        let currentPage = 1;
+        function showPage(page) {
+            if (page < 1) page = 1;
+            if (page > pages) page = pages;
+            currentPage = page;
+
+            // Ocultar/mostrar artículos
+            items.forEach((it, i) => {
+                const start = (page - 1) * perPage;
+                const end = start + perPage;
+                if (i >= start && i < end) {
+                    it.style.display = ''; // mantener display de grid
+                } else {
+                    it.style.display = 'none';
+                }
+            });
+
+            // Actualizar estilos de botones
+            paginationContainer.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+            const currentBtn = paginationContainer.querySelector('.page-btn[data-page="' + page + '"]');
+            if (currentBtn) currentBtn.classList.add('active');
+
+            // Habilitar / deshabilitar prev/next
+            prevBtn.disabled = page <= 1;
+            nextBtn.disabled = page >= pages;
+
+            // Para accesibilidad: mover foco al contenedor de artículos cuando se cambia la página (opcional)
+            grid.setAttribute('tabindex', '-1');
+            grid.focus({preventScroll: true});
+        }
+
+        // Inicializar: mostrar página 1
+        showPage(1);
+    })();
+    </script>
+
+    <script data-name="BMC-Widget"
+    data-cfasync="false"
+    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="davidfernaf"
+    data-description="Apoya mi trabajo"
+    data-message="Si quieres apoyar la divulgación científica, puedes invitarme un café 😊"
+    data-color="#FFDD00"
+    data-position="Right"
+    data-x_margin="16"
+    data-y_margin="16">
+    </script>
 
 </body>
 </html>
