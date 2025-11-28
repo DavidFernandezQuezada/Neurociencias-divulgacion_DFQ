@@ -590,6 +590,18 @@ data-position="Right"
 data-x_margin="16"
 data-y_margin="16">
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const articulos = document.querySelectorAll(".article-card");
+    articulos.forEach((art, i) => {
+        const grupo = Math.floor(i / 3) + 1; 
+        const titulo = art.querySelector("h3");
+        if (titulo) {
+            titulo.textContent = grupo + ". " + titulo.textContent;
+        }
+    });
+});
+</script>
 
 </body>
 </html>
