@@ -354,6 +354,12 @@
         @media (max-width:600px) {
             .pagination { justify-content: center; }
         }
+        /* Botón de compartir en cada artículo */
+.share-row {
+    margin-top: 0.6rem;
+    display: flex;
+    flex-wrap: wrap;
+}
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2607637405526975"
      crossorigin="anonymous"></script>
@@ -782,6 +788,63 @@ En este estudio presentamos un protocolo innovador para desarrollar un modelo pr
     data-x_margin="16"
     data-y_margin="16">
     </script>
+<script>
+(function () {
+    const supportsShare = typeof navigator !== 'undefined' && !!navigator.share;
 
+    // Aplica a artículos de "Últimas publicaciones" y "Línea de investigación"
+    const cards = document.querySelectorAll(
+        '#articulos .article-card, #linea-investigacion .article-card'
+    );
+
+    cards.forEach(function (card) {
+        // Contenedor del botón
+        const row = document.createElement('div');
+        row.className = 'share-row';
+
+        // Botón usando el estilo btn-ghost que ya tienes
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn-ghost btn-share';
+        btn.textContent = '📤 Compartir';
+
+        btn.addEventListener('click', async function () {
+            const titleNode = card.querySelector('h3');
+            const textNode  = card.querySelector('p');
+
+            const title = titleNode ? titleNode.innerText.trim() : 'NeuroAlClick';
+            let text = textNode ? textNode.innerText.trim() : '';
+            if (text.length > 200) text = text.slice(0, 200) + '…';
+
+            const url = window.location.href.split('#')[0]; // URL de la página
+
+            if (supportsShare) {
+                // Web Share API (móviles: WhatsApp, X, Facebook, etc.)
+                try {
+                    await navigator.share({ title, text, url });
+                } catch (e) {
+                    // el usuario canceló, no pasa nada
+                }
+            } else {
+                // Fallback: compartir en X (Twitter)
+                const shareUrl =
+                    'https://twitter.com/intent/tweet?text=' +
+                    encodeURIComponent(title) +
+                    '&url=' + encodeURIComponent(url);
+
+                window.open(shareUrl, '_blank', 'noopener,noreferrer');
+            }
+        });
+
+        row.appendChild(btn);
+
+        // Insertar el botón después del último <p> del artículo
+        const p = card.querySelector('p:last-of-type') || card.lastElementChild;
+        if (p && p.parentNode) {
+            p.parentNode.insertBefore(row, p.nextSibling);
+        }
+    });
+})();
+</script>
 </body>
 </html>
