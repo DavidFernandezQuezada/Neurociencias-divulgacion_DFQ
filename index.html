@@ -809,7 +809,9 @@ En este estudio presentamos un protocolo innovador para desarrollar un modelo pr
     </script>
 <script>
 (function () {
-    const supportsShare = typeof navigator !== 'undefined' && !!navigator.share;
+    const supportsShare =
+        typeof navigator !== 'undefined' &&
+        typeof navigator.share === 'function';
 
     // Aplica a artículos de "Últimas publicaciones" y "Línea de investigación"
     const cards = document.querySelectorAll(
@@ -821,7 +823,7 @@ En este estudio presentamos un protocolo innovador para desarrollar un modelo pr
         const row = document.createElement('div');
         row.className = 'share-row';
 
-        // Botón usando el estilo btn-ghost que ya tienes
+        // Botón usando el estilo btn-ghost + btn-share
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'btn-ghost btn-share';
@@ -845,29 +847,61 @@ En este estudio presentamos un protocolo innovador para desarrollar un modelo pr
         btn.addEventListener('click', async function () {
             const titleNode = card.querySelector('h3');
             const textNode  = card.querySelector('p');
+            const imgNode   = card.querySelector('img');
 
             const title = titleNode ? titleNode.innerText.trim() : 'NeuroAlClick';
             let text = textNode ? textNode.innerText.trim() : '';
             if (text.length > 200) text = text.slice(0, 200) + '…';
 
-            const url = window.location.href.split('#')[0]; // URL de la página
+            const url = window.location.href.split('#')[0]; // URL base de la página
 
+            // Intento 1: compartir TEXTO + URL + IMAGEN (Web Share API Level 2)
+            if (supportsShare && typeof navigator.canShare === 'function' && imgNode) {
+                const src = imgNode.getAttribute('src');
+                if (src) {
+                    try {
+                        const response = await fetch(src);
+                        const blob = await response.blob();
+                        const fileName = src.split('/').pop() || 'imagen.png';
+                        const file = new File([blob], fileName, {
+                            type: blob.type || 'image/png'
+                        });
+
+                        const shareDataWithFile = {
+                            title,
+                            text,
+                            url,
+                            files: [file]
+                        };
+
+                        if (navigator.canShare(shareDataWithFile)) {
+                            await navigator.share(shareDataWithFile);
+                            return; // listo, ya se compartió con imagen
+                        }
+                    } catch (error) {
+                        console.warn('No se pudo compartir la imagen, se usará solo texto/URL.', error);
+                    }
+                }
+            }
+
+            // Intento 2: compartir solo TEXTO + URL (sin imagen)
             if (supportsShare) {
-                // Web Share API (móviles: WhatsApp, X, Facebook, etc.)
                 try {
                     await navigator.share({ title, text, url });
+                    return;
                 } catch (e) {
-                    // el usuario canceló, no pasa nada
+                    // usuario canceló o hubo error; pasamos al fallback
                 }
-            } else {
-                // Fallback: compartir en X (Twitter)
-                const shareUrl =
-                    'https://twitter.com/intent/tweet?text=' +
-                    encodeURIComponent(title) +
-                    '&url=' + encodeURIComponent(url);
-
-                window.open(shareUrl, '_blank', 'noopener,noreferrer');
             }
+
+            // Fallback: compartir en X (Twitter)
+            const shareUrl =
+                'https://twitter.com/intent/tweet?text=' +
+                encodeURIComponent(title + ' – ' + text) +
+                '&url=' +
+                encodeURIComponent(url);
+
+            window.open(shareUrl, '_blank', 'noopener,noreferrer');
         });
 
         row.appendChild(btn);
